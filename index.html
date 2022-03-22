@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+        <title>Sorting Visualizer</title>
+    </head>
+    <body>
+
+        <header class="header">
+            <div class="logo">
+                Sorting <span class="text-orange">Visualizer</span>
+            </div>
+            <div class="df fdc">
+                <label for="arraysize">Change array size</label>
+                <input type="text" id="arraysize" placeholder="100" value="100" class="arraysize-input" data-array-size>
+            </div>
+            <div class="df fdc">
+                <label for="algorithm-name">Select algorithm</label>
+                <select id="algorithm-name" class="select-input" data-select-sorting-algorithm>
+                    <option value="bubblesort" selected>Bubble Sort</option>
+                    <option value="selectionsort">Selection Sort</option>
+                    <option value="insertionsort">Insertion Sort</option>
+                </select>
+            </div>
+            <div class="df">
+                <button class="btn-secondary" data-generate-new-array-btn>Regenerate</button>
+                <button class="btn-primary" data-visualize-btn>Visualize!</button>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="array-container" data-array-container></div>
+        </main>
+
+    </body>
+</html>
