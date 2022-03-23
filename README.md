@@ -1,5 +1,7 @@
-# Sorting Visualizer
-〽️ A simple web tool to visualize the different sorting algorithms.
+# [Sorting Visualizer](https://0l1v3rr.github.io/sorting-visualizer/)
+〽️ A simple web tool to visualize the different sorting algorithms.  
+This sorting visualization is not spectacular in mobile, so the webpage is not responsive.  
+Demo: [click here](https://0l1v3rr.github.io/sorting-visualizer/)
 
 <img src="./img/screenshotv1.png" alt="Screenshot">
 

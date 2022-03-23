@@ -131,6 +131,7 @@ async function bubbleSort() {
     speed.disabled = false;
 }
 
+// Selection Sort
 async function selectionSort() {
     for(let i = 0; i < arraySizeInput - 1; i++) {
         let minIndex = i;
@@ -158,6 +159,7 @@ async function selectionSort() {
     speed.disabled = false;
 }
 
+// Insertion Sort
 async function insertionSort() {
     for (let i = 1; i < arraySizeInput; i++) {
         let temp = arr[i];
