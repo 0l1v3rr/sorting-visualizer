@@ -4,6 +4,8 @@ const arraySizeInputBox = document.querySelector('[data-array-size]');
 const generateNewArrayBtn = document.querySelector('[data-generate-new-array-btn]');
 const visualizeBtn = document.querySelector('[data-visualize-btn]');
 const select = document.querySelector('[data-select-sorting-algorithm]');
+const speed = document.querySelector('[data-input-range]');
+const speedText = document.querySelector('[data-speed-text]');
 
 let arraySizeInput = document.querySelector('[data-array-size]').value;
 let arr = [];
@@ -69,6 +71,7 @@ visualizeBtn.onclick = () => {
     generateNewArrayBtn.disabled = true;
     arraySizeInputBox.disabled = true;
     select.disabled = true;
+    speed.disabled = true;
 
     if(select.value == "bubblesort") {
         bubbleSort();
@@ -76,6 +79,28 @@ visualizeBtn.onclick = () => {
         selectionSort();
     } else if(select.value == "insertionsort") {
         insertionSort();
+    }
+}
+speed.onchange = () => {
+    let value = speed.value;
+    if(value == 1) {
+        sleepTime = 750;
+        speed.classList.add('slow');
+        speed.classList.remove('medium');
+        speed.classList.remove('fast');
+        speedText.innerText = 'Slow';
+    } else if(value == 2) {
+        sleepTime = 350;
+        speed.classList.add('medium');
+        speed.classList.remove('slow');
+        speed.classList.remove('fast');
+        speedText.innerText = 'Medium';
+    } else {
+        sleepTime = 100;
+        speed.classList.add('fast');
+        speed.classList.remove('slow');
+        speed.classList.remove('medium');
+        speedText.innerText = 'Fast';
     }
 }
 
@@ -103,6 +128,7 @@ async function bubbleSort() {
     generateNewArrayBtn.disabled = false;
     arraySizeInputBox.disabled = false;
     select.disabled = false;
+    speed.disabled = false;
 }
 
 async function selectionSort() {
@@ -129,6 +155,7 @@ async function selectionSort() {
     generateNewArrayBtn.disabled = false;
     arraySizeInputBox.disabled = false;
     select.disabled = false;
+    speed.disabled = false;
 }
 
 async function insertionSort() {
@@ -151,4 +178,5 @@ async function insertionSort() {
     generateNewArrayBtn.disabled = false;
     arraySizeInputBox.disabled = false;
     select.disabled = false;
+    speed.disabled = false;
 }
