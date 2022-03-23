@@ -121,9 +121,11 @@ label {
 .select-input:focus,
 .arraysize-input:focus {
     border: 1px solid #f16340;
+    box-shadow: 0 0 0 .1rem #f1634086;
 }
 .arraysize-input.error {
     border: 1px solid #ff3030;
+    box-shadow: 0 0 0 .1rem #ff303086;
     color: #fa7676;
 }
 
@@ -152,4 +154,8 @@ label {
 }
 .array-item.active {
     background-color: #d64824;
+}
+.array-item.selected {
+    border: 1px solid rgba(255, 255, 255, .5);
+    border-top: 0;
 }
