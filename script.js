@@ -52,6 +52,15 @@ function sleep(ms) {
     });
 }
 
+function sortedArrayHandle() {
+    generateArrayDivs(true);
+    visualizeBtn.disabled = false;
+    generateNewArrayBtn.disabled = false;
+    arraySizeInputBox.disabled = false;
+    select.disabled = false;
+    speed.disabled = false;
+}
+
 /* === FUNCTIONALITY === */
 generateNewArrayBtn.onclick = (e) => {
     e.target.blur();
@@ -66,7 +75,7 @@ arraySizeInputBox.onkeyup = (e) => {
         generateNewArray();
     }
 }
-visualizeBtn.onclick = () => {
+visualizeBtn.onclick = async () => {
     visualizeBtn.disabled = true;
     generateNewArrayBtn.disabled = true;
     arraySizeInputBox.disabled = true;
@@ -79,6 +88,9 @@ visualizeBtn.onclick = () => {
         selectionSort();
     } else if(select.value == "insertionsort") {
         insertionSort();
+    } else if(select.value == "quicksort") {
+        await quickSort(arr, 0, arraySizeInput - 1);
+        sortedArrayHandle();
     }
 }
 speed.onchange = () => {
@@ -123,12 +135,7 @@ async function bubbleSort() {
         }
         if(isSorted) break;
     }
-    generateArrayDivs(true);
-    visualizeBtn.disabled = false;
-    generateNewArrayBtn.disabled = false;
-    arraySizeInputBox.disabled = false;
-    select.disabled = false;
-    speed.disabled = false;
+    sortedArrayHandle();
 }
 
 // Selection Sort
@@ -151,12 +158,7 @@ async function selectionSort() {
         await sleep(sleepTime);
         generateArrayDivsForSelectionSort(i, null, null);
     }
-    generateArrayDivs(true);
-    visualizeBtn.disabled = false;
-    generateNewArrayBtn.disabled = false;
-    arraySizeInputBox.disabled = false;
-    select.disabled = false;
-    speed.disabled = false;
+    sortedArrayHandle();
 }
 
 // Insertion Sort
@@ -175,10 +177,42 @@ async function insertionSort() {
         await sleep(sleepTime);
         generateArrayDivsForSelectionSort(j+1, null, null);
     }
-    generateArrayDivs(true);
-    visualizeBtn.disabled = false;
-    generateNewArrayBtn.disabled = false;
-    arraySizeInputBox.disabled = false;
-    select.disabled = false;
-    speed.disabled = false;
+    sortedArrayHandle();
+}
+
+// Quick Sort
+async function quickSort(array, low, high) {
+    if(array == null) return;
+    if(low >= high) return;
+    if(array.length < 2) return;
+
+    let pivot = array[high];
+
+    let leftPointer = low, rightPointer = high;
+
+    while(leftPointer < rightPointer) {
+        await sleep(sleepTime);
+        generateArrayDivsForSelectionSort(null, leftPointer, rightPointer);
+
+        while(array[leftPointer] <= pivot && leftPointer < rightPointer) {
+            leftPointer++;
+        }
+        while(array[rightPointer] >= pivot && leftPointer < rightPointer) {
+            rightPointer--;
+        }
+
+        let temp = array[leftPointer];
+        array[leftPointer] = array[rightPointer];
+        array[rightPointer] = temp;
+    }
+    
+    let temp = array[leftPointer];
+    array[leftPointer] = array[high];
+    array[high] = temp;
+
+    await sleep(sleepTime);
+    generateArrayDivsForSelectionSort(high, null, null);
+
+    await quickSort(array, low, leftPointer - 1);
+    await quickSort(array, leftPointer + 1, high);
 }

@@ -10,7 +10,7 @@
     color: #f5f6fa;
 }
 
-html { font-size: 16px; }
+html { font-size: clamp(14px, 1.2vw, 25px); }
 
 body { 
     font-family: 'Roboto', Verdana, sans-serif;
@@ -138,8 +138,10 @@ label {
     border-radius: .4rem;  
     transition: .2s;
 }
+.set-speed:disabled *,
 .set-speed:disabled {
     cursor: not-allowed;
+    opacity: .7;
 }
 .set-speed::-webkit-slider-thumb {
     appearance: none;
