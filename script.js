@@ -91,6 +91,9 @@ visualizeBtn.onclick = async () => {
     } else if(select.value == "quicksort") {
         await quickSort(arr, 0, arraySizeInput - 1);
         sortedArrayHandle();
+    } else if(select.value == "heapsort") {
+        await heapSort(arr);
+        sortedArrayHandle();
     }
 }
 speed.onchange = () => {
@@ -215,4 +218,53 @@ async function quickSort(array, low, high) {
 
     await quickSort(array, low, leftPointer - 1);
     await quickSort(array, leftPointer + 1, high);
+}
+
+// Heap Sort
+async function heapSort(array) {
+    if(array == null) return;
+    if(array.length < 2) return;
+
+    for(let i = arraySizeInput / 2 - 1; i >= 0; i--)
+        await heapify(array, arraySizeInput, i);
+
+    for(let i = arraySizeInput - 1; i >= 0; i--) {
+        let temp = array[i];
+        array[i] = array[0];
+        array[0] = temp;
+
+        await sleep(sleepTime);
+        generateArrayDivsForSelectionSort(i, null, null);
+
+
+        await heapify(arr, i, 0);
+    }
+}
+
+async function heapify(array, n, i) {
+    let largest = i;
+
+    let left = 2 * i + 1;
+    let right = 2 * i + 2;
+
+    await sleep(sleepTime);
+    generateArrayDivsForSelectionSort(null, left, largest);
+    if (left < n && array[left] > array[largest]) largest = left;
+
+    await sleep(sleepTime);
+    generateArrayDivsForSelectionSort(null, right, largest);
+    if (right < n && array[right] > array[largest]) {
+        largest = right;
+    }
+
+    if (largest != i) {
+        let temp = array[i];
+        array[i] = arr[largest];
+        array[largest] = temp;
+
+        await sleep(sleepTime);
+        generateArrayDivsForSelectionSort(i, null, null);
+
+        await heapify(array, n, largest);
+    }
 }

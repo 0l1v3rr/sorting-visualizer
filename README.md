@@ -10,6 +10,8 @@ Demo: [click here](https://0l1v3rr.github.io/sorting-visualizer/)
 - Bubble Sort
 - Selection Sort
 - Insertion Sort
+- Quick Sort
+- Heap Sort
 
 ## Features:
 - Visualize Sorting algorithm
