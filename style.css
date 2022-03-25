@@ -195,3 +195,40 @@ label {
     border: 1px solid rgba(255, 255, 255, .5);
     border-top: 0;
 }
+
+/* === MEDIA QUERIES === */
+@media screen and (max-width: 992px) {
+    .logo {
+        display: none;
+    }
+    .header {
+        padding-left: 1rem;
+    }
+}
+@media screen and (max-width: 768px) {
+    .change-arr-size {
+        display: none;
+    }
+    .select-input {
+        width: 20vw;
+    }
+}
+@media screen and (max-width: 576px) {
+    .speed-select {
+        display: none;
+    }
+    .header {
+        justify-content: space-around;
+    }
+    .select-input {
+        width: 30vw;
+    }
+}
+@media screen and (max-width: 360px) {
+    .regenerate-btn {
+        display: none;
+    }
+    .select-input {
+        width: 40vw;
+    }
+}
